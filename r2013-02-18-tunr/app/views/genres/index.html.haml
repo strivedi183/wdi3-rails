@@ -1,0 +1,12 @@
+.row
+  .twelve.columns
+    = button_to('Add New', new_genre_path, :method=>:get, :class => 'button radius') if is_admin
+    %h4 Genres:
+    %table
+      - @genres.each do |genre|
+        %tr{:class => cycle('row0','row1')}
+          %td
+            = link_to genre.name, genre, :class => 'button radius tiny'
+          - if is_admin
+            %td
+              = link_to 'Edit', edit_genre_path(genre), :class => "button success tiny" if is_admin

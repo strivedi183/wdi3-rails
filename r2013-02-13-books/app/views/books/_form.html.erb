@@ -1,0 +1,20 @@
+<%= form_for @book do |f| %>
+  <br>
+  <%= f.label :title %>
+  <br>
+  <%= f.text_field :title %>
+  <br>
+  <%= f.label :description %>
+  <br>
+  <%= f.text_field :description %>
+  <br>
+  <%= f.label :ISBN %>
+  <br>
+  <%= f.text_field :ISBN %>
+  <br>
+  <%= f.label :image %>
+  <br>
+  <%= f.text_field :image %>
+  <br>
+  <%= f.submit %>
+<% end %>

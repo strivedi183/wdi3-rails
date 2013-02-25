@@ -1,0 +1,37 @@
+.row
+  .twelve.columns
+    Song Name:
+    %div= @song.name
+    - @song.mixtapes.each do |mixtape|
+      Mixtape Name:
+      = mixtape.name
+    %br
+    Song Cost:
+    = number_to_currency(@song.price)
+    %br
+    Your Balance:
+    = number_to_currency(@auth.balance)
+    %br
+    Balance After Purchase:
+    = number_to_currency(@auth.balance - @song.price)
+    %br
+    Assign it to a Mixtape:
+    %br
+    Mixtape:
+    %br
+    - @song.mixtapes.each do |mixtape|
+      = mixtape.name
+    %br
+
+    %br
+    = form_tag buy_song_path, :method => 'post' do |f|
+      - @auth.mixtapes.each do |mixtape|
+        %span
+          = check_box_tag 'song[mixtape_ids][]', mixtape.id, mixtape.in?(@song.mixtapes)
+        %span
+          = mixtape.name
+        %br
+      - if number_to_currency(@song.price) <= number_to_currency(@auth.balance)
+        = submit_tag 'Purchase', :method => 'post', :confirm => 'Are you sure?', :class => 'button radius success tiny'
+      - else
+        = link_to('Not Enough Funds', song_path(@song.id), :method => 'get', :class => 'button disabled tiny alert')

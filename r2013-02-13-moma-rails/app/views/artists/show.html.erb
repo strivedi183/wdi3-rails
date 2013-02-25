@@ -1,0 +1,29 @@
+<div class="span12">
+  <div class="span5">
+  <%= image_tag(@artist.image) %></li>
+  </div>
+  <ul class="span5">
+    <li>Artist: <%= @artist.name %></li>
+    <li>Nationality: <%= @artist.nationality %></li>
+    <li>Date of Birth: <%= @artist.dob %></li>
+    <li>Period: <%= @artist.period %></li>
+  </ul>
+  <br>
+  <% @artist.paintings.each do |painting| %>
+  <span class="span12">
+    <span class="span6">
+      <%= image_tag(painting.image) %>
+    </span>
+    <span class="span6">
+      Painting: <%= link_to painting.title, painting %>
+      Year: <%= painting.year %>
+      Medium: <%= painting.medium %>
+      Style: <%= painting.style %>
+    </span>
+  </span>
+  <% end %>
+  <div class="span5">
+  <%= link_to 'Delete', @artist, :method => :delete, :confirm => 'Is it ok to delete?' %>
+  <%= link_to 'Edit', edit_artist_path(@artist) %>
+  </div>
+</div>

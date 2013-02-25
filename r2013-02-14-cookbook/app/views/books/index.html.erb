@@ -1,0 +1,16 @@
+<section>
+  <% @books.each do |book| %>
+  <div class="span3">
+    <dl>
+      <dt>Cookbook Title: </dt>
+      <dd><%= link_to(book.title, book) %></dd>
+      <dt>Cuisine Type:</dt>
+      <dd><%= book.cuisine %></dd>
+      <dt>Chef: </dt>
+      <dd><%= book.chef %></dd>
+      <dt>Cover: </dt>
+      <dd><%= image_tag(book.image) %></dd>
+    </dl>
+  </div>
+  <% end %>
+</section>

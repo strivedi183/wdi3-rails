@@ -1,0 +1,12 @@
+<%= image_tag(@author.image) %>
+Author: <%= @author.name %>
+Nationality: <%= @author.nationality %>
+Date of Birth: <%= @author.dob %>
+<% @author.books.each do |book| %>
+  <%= image_tag(painting.image) %>
+  Book: <%= link_to book.title, book %>
+  Description: <%= book.description %>
+  ISBN: <%= book.isbn %>
+<% end %>
+<%= link_to 'Delete', @author, :method => :delete, :confirm => 'Is it ok to delete?' %>
+<%= link_to 'Edit', edit_author_path(@author) %>

@@ -1,0 +1,10 @@
+Edit
+<form method='post' action='<%= mountain_path(@mountain.id) %>'>
+  Name: <input type='text' name='mountain[name]' value='<%= @mountain.name %>'  autofocus><br>
+  Image: <input type='text' name='mountain[image]' value='<%= @mountain.image %>'><br>
+  Elevation: <input type='text' name='mountain[elevation]' value='<%= @mountain.elevation %>'><br>
+  Prominence: <input type='text' name='mountain[prominence]' value='<%= @mountain.prominence %>'><br>
+  Continent: <input type='text' name='mountain[continent]' value='<%= @mountain.continent %>'><br>
+  Range: <input type='text' name='mountain[range]' value='<%= @mountain.range %>'><br>
+  <button>Edit Mountain</button>
+</form>

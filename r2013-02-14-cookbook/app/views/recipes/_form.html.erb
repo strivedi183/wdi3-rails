@@ -1,0 +1,23 @@
+<%= form_for @recipe do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name, :autofocus => 'autofocus' %>
+  <%= f.label :course %>
+  <%= f.text_field :course %>
+  <%= f.label :cooktime %>
+  <%= f.text_field :cooktime %>
+  <%= f.label :servingsize %>
+  <%= f.text_field :servingsize %>
+  <%= f.label :instructions %>
+  <%= f.text_field :instructions %>
+  <%= f.label :book_id %>
+  <%= f.select :book_id, Book.all.map{|book| [book.title, book.id]}, :include_blank => true, :prompt => "Pick Cook Book" %>
+  <%= f.label :image %>
+  <%= f.text_field :image %>
+  <br>
+  <% Ingredient.order(:name).each do |ingredient| %>
+    <span><%= ingredient.name %></span>
+    <span><%= check_box_tag 'book[ingredient_ids][]', ingredient.id, ingredient.in?(@recipe.ingredients.to_a) %></span>
+  <% end %>
+  <br>
+  <%= f.submit :class => "btn btn-success" %>
+<% end %>

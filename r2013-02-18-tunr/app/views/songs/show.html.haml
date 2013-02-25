@@ -1,0 +1,45 @@
+.row
+  .twelve.columns
+    %h4
+      = "#{@song.name}'s Information:"
+      = link_to 'Edit Song', edit_song_path(@song), :class => "button success tiny" if is_admin
+    %table
+      %tr
+        %td
+          = audio_tag(@song.filename, :controls => true) if @auth != nil
+      %tr{:class => cycle('row0','row1')}
+        %td
+          = @song.name
+      %tr
+        %td
+          Album:
+          = @song.album.present? ? link_to(@song.album.name, @song.album) : 'No albums'
+      %tr
+        %td
+          Artist:
+          = @song.artist.present? ? link_to(@song.artist.name, @song.artist) : 'No artist'
+      %tr
+        %td
+          Genre:
+          - @song.genres.each do |genre|
+            = link_to genre.name, genre
+            |
+      %tr
+        %td
+          Mixtape:
+          - if @auth.mixtapes.map(&:songs).flatten.include?(@song)
+            %br
+            - @auth.mixtapes.each do |mixtape|
+              %span
+                = check_box_tag 'song[mixtape_ids][]', mixtape.id, mixtape.in?(@song.mixtapes)
+              %span
+                = mixtape.name
+          - else
+            %span.label Must Purchase to Assign to a Mixtape
+          %br
+      %tr
+        %td
+          - if @auth.mixtapes.map(&:songs).flatten.include?(@song)
+            = link_to('Refund Song', refund_song_path, :method => 'post', :class => 'button tiny alert')
+          - else
+            = link_to('Purchase Song', purchase_song_path, :method => 'get', :confirm => 'Are you sure?', :class => 'button radius alert tiny')

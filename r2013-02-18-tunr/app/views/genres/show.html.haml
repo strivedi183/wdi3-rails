@@ -1,0 +1,11 @@
+.row
+  .twelve.columns
+    %h4= "#{@genre.name}'s Songs:"
+    %table
+      - @genre.songs.each do |song|
+        %tr
+          %td
+            = link_to song.name, song_path(song)
+        - if is_admin
+          %td
+            = link_to 'Edit', edit_song_path(song), :class => "button success tiny" if is_admin

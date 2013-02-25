@@ -1,0 +1,10 @@
+<div class="span12">
+  <%= link_to 'Delete', @ingredient, :method => :delete, :confirm => 'Is it ok to delete?', :class=> 'btn btn-danger' %>
+  <%= link_to 'Edit', edit_ingredient_path(@ingredient), :class=> 'btn btn-warning' %>
+  <dl>
+    <dt>Ingredient Name:</dt>
+    <dd><%= @ingredient.name %></dd>
+    <dt>Ingredient Image:</dt>
+    <dd><%= image_tag(@ingredient.image) %><dd>
+  </dl>
+</div>

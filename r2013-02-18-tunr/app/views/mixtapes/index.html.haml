@@ -1,0 +1,10 @@
+.row
+  .twelve.columns
+    = button_to('Add New Mixtape', new_mixtape_path, :method=>:get, :class => 'button radius') if is_admin
+    %table
+      - @auth.mixtapes.each do |mixtape|
+        %tr{:class => cycle('row0','row1')}
+          %td
+            = link_to mixtape.name, mixtape, :class => 'button radius tiny'
+          %td
+            = link_to 'Edit', edit_mixtape_path(mixtape), :class => "button success tiny" if is_admin

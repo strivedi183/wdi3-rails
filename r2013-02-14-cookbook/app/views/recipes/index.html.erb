@@ -1,0 +1,15 @@
+<section>
+
+<% @recipes.each do |recipe| %>
+<div class="span3">
+<dl>
+    <dt>Recipe Name: </dt>
+    <dd><%= link_to(recipe.name, recipe) %></dd>
+
+    <dt>Recipe Image: </dt>
+    <dd><%= image_tag(recipe.image) %></dd>
+</dl>
+<br>
+</div>
+<% end %>
+</section>

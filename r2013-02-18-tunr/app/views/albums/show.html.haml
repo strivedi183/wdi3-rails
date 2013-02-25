@@ -1,0 +1,23 @@
+.row
+  .twelve.columns
+    %h4
+      = "#{@album.name}'s Artists:"
+      = link_to 'Purchase Entire Album', purchase_album_path(@album), :class => "button success tiny"
+      = link_to 'Edit Album', edit_album_path(@album), :class => "button success tiny" if is_admin
+    %table
+      - @album.artists.each do |artist|
+        %tr
+          %td
+            = link_to artist.name, artist
+
+    %table
+      - @album.songs.each do |song|
+        %tr
+          %td
+            = link_to(song.name, song)
+          - if !@auth.nil? && !is_admin
+            %td
+              - if @auth.mixtapes.map(&:songs).flatten.include?(song)
+                = link_to('Song Purchased!', nil, :class => 'button disabled tiny alert')
+              - else
+                = link_to('Purchase Song', purchase_song_path(song.id), :method => 'get', :confirm => 'Are you sure?', :class => 'button radius success tiny')

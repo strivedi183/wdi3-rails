@@ -1,0 +1,8 @@
+<h1>The stock results should show: </h1>
+
+<form action="/quote" method="get">
+<input type="text" name="quote">
+<button>Get Quote!</button>
+</form>
+
+<h2><%= @stock_symbol %> is traded at <%= number_to_currency(@share_price) %> a share.</h2>

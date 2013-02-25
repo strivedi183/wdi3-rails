@@ -1,0 +1,11 @@
+This is the planet file!
+<br><br>
+<% @planets.each do |planet| %>
+<ui><strong>Name:</strong> <%= link_to(planet.name, planet_path(planet.id)) %><br>
+  <li><em>Orbit:</em> <%= planet.orbit %></li>
+  <li><em>Moons:</em> <%= planet.moons %></li>
+  <%= link_to('Edit', planet_edit_path(planet.id)) %>
+  <%= button_to('Delete', planet_delete_path(planet.id)) %>
+</ul>
+<br>
+<% end %>

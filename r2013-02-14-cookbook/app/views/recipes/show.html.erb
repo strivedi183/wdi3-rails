@@ -1,0 +1,22 @@
+<div class="span12">
+  <%= link_to 'Delete', @recipe, :method => :delete, :confirm => 'Is it ok to delete?', :class=> 'btn btn-danger' %>
+  <%= link_to 'Edit', edit_recipe_path(@recipe), :class=> 'btn btn-warning' %>
+  <dl>
+    <dt>Recipe Name:</dt>
+    <dd><%= @recipe.name %></dd>
+    <dt>Recipe Image:</dt>
+    <dd><%= image_tag(@recipe.image) %></dd>
+      <br>
+        <% @recipe.ingredients.each do |ingredient| %>
+          <%= link_to 'Delete', ingredient, :method => :delete, :confirm => 'Is it ok to delete?', :class=> 'btn btn-danger' %>
+          <%= link_to 'Edit', edit_ingredient_path(ingredient), :class=> 'btn btn-delete' %>
+          <dl>
+            <dt>Ingredient Name:</dt>
+            <dd><%= link_to(ingredient.name, ingredient) %></dd>
+            <dt>Ingredient Image:</dt>
+            <dd><%= image_tag(ingredient.image) %><dd>
+          </dl>
+        <% end %>
+  </dl>
+
+</div>

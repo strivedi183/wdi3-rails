@@ -1,0 +1,8 @@
+<% @authors.each do |author| %>
+  <br>
+  <%= image_tag(author.image) %>
+  <br>
+  Author: <%= link_to author.name, author %>
+  Nationality: <%= author.nationality %>
+  Date of Birth: <%= author.dob %>
+<% end %>

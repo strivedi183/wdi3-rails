@@ -1,0 +1,20 @@
+.row
+  .twelve.columns
+    = button_to('Add New Artist', new_artist_path, :method=>:get, :class => 'button radius') if is_admin
+    %table
+      %th
+        Name:
+      %th
+        Image:
+      - if is_admin
+        %th
+          Edit:
+      - @artists.each do |artist|
+        %tr{:class => cycle('row0','row1')}
+          %td
+            = link_to artist.name, artist, :class => 'button radius tiny'
+          %td
+            = image_tag(artist.image)
+          - if is_admin
+            %td
+              = link_to 'Edit Artist', edit_artist_path(artist), :class => "button success tiny" if is_admin

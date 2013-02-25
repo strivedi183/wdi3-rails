@@ -1,0 +1,6 @@
+<%= image_tag(@book.image) %>
+Book: <%= @book.title %>
+Description: <%= @book.description %>
+ISBN: <%= @book.isbn %>
+<%= link_to 'Delete', @book, :method => :delete, :confirm => 'Is it ok to delete?' %>
+<%= link_to 'Edit', @book %>

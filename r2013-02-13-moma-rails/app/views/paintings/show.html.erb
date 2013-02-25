@@ -1,0 +1,15 @@
+<div class="span12">
+  <div class="span5">
+  <%= image_tag(@painting.image) %></li>
+  </div>
+  <ul class="span5">
+    <li>Painting: <%= @painting.title %></li>
+    <li>Year: <%= @painting.year %></li>
+    <li>Medium: <%= @painting.medium %></li>
+    <li>Style: <%= @painting.style %></li>
+  </ul>
+  <div class="span5">
+    <%= link_to 'Delete', @painting, :method => :delete, :confirm => 'Is it ok to delete?' %>
+    <%= link_to 'Edit', @painting %>
+  </div>
+</div>

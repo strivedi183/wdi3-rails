@@ -1,0 +1,12 @@
+<%= form_for @ingredient do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name, :autofocus => 'autofocus' %>
+  <%= f.label :measurement %>
+  <%= f.text_field :measurement %>
+  <%= f.label :cost %>
+  <%= f.text_field :cost %>
+  <%= f.label :image %>
+  <%= f.text_field :image %>
+  <br>
+  <%= f.submit %>
+<% end %>

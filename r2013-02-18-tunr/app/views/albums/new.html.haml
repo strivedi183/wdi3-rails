@@ -1,0 +1,16 @@
+.row
+  .twelve.columns
+    = render(:partial => 'shared/errors', :locals => {:object => @album})
+    %h1 Create Album
+    = form_for @album do |f|
+      = f.label :name
+      = f.text_field :name, :autofocus => true
+      = f.label :image
+      = f.text_field :image
+      - Song.order(:name).each do |song|
+        %span
+          = check_box_tag 'album[song_ids][]', song.id, song.in?(@album.songs)
+        %span
+          = song.name
+        %br
+      = f.submit nil, :class => 'button radius'

@@ -1,0 +1,9 @@
+This is the mountain file!
+<br><br>
+<% @mountains.each do |mountain| %>
+<ui><strong>Name:</strong> <%= link_to(mountain.name, mountain_path(planet.id)) %><br>
+  <%= link_to('Edit', mountain_edit_path(mountain.id)) %>
+  <%= button_to('Delete', mountain_delete_path(mountain.id)) %>
+</ul>
+<br>
+<% end %>

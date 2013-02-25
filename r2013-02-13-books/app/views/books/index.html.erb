@@ -1,0 +1,8 @@
+<% @books.each do |book| %>
+  <br>
+  <%= image_tag(book.image) %>
+  <br>
+  Title: <%= link_to book.title, book %>
+  Description: <%= book.description %>
+  ISBN: <%= book.isbn %>
+<% end %>

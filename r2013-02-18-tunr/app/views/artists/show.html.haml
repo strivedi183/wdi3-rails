@@ -1,0 +1,10 @@
+.row
+  .twelve.columns
+    %h4
+      = "#{@artist.name}'s Albums:"
+      = link_to 'Edit Artist', edit_artist_path(@artist), :class => "button success tiny" if is_admin
+    %table
+      - @artist.albums.each do |album|
+        %tr
+          %td
+            = link_to album.name, album

@@ -1,0 +1,13 @@
+<% @artists.each do |artist| %>
+<div class="span6">
+  <div class="span3">
+  <%= image_tag(artist.image) %></li>
+  </div>
+  <ul class="span2">
+    <li>Artist: <%= link_to artist.name, artist %></li>
+    <li>Nationality: <%= artist.nationality %></li>
+    <li>Date of Birth: <%= artist.dob %></li>
+    <li>Period: <%= artist.period %></li>
+  </ul>
+</div>
+<% end %>

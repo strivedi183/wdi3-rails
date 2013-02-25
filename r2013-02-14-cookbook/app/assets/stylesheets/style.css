@@ -1,0 +1,64 @@
+body
+{
+  background-color: #F5E9BE;
+}
+
+.container
+{
+  background-color: #FFE184;
+}
+
+img
+{
+  height:100px;
+  width:100px;
+}
+
+.nav
+{
+  background-color: #207178;
+}
+
+.nav > li > a {
+  color:#FFE184;
+}
+
+.nav > li > a:hover {
+  text-decoration: none;
+  background-color: #FFE184;
+  color:#207178;
+}
+
+.ingredients a
+{
+  display: inline-block;
+}
+
+.ingredients dl
+{
+  display:inline-block;
+}
+
+.nav-tabs .open .dropdown-toggle,
+.nav-pills .open .dropdown-toggle,
+.nav > li.dropdown.open.active > a:hover {
+  color: #207178;
+  background-color: #FFE184;
+  border-color: #FFE184;
+}
+
+.dropdown-menu
+{
+  background-color: #207178;
+}
+
+.dropdown-menu li > a {
+  display: block;
+  padding: 3px 20px;
+  clear: both;
+  font-weight: normal;
+  line-height: 20px;
+  color: #FFE184;
+  white-space: nowrap;
+}
+

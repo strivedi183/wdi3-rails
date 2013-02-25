@@ -1,0 +1,37 @@
+<div class="span12">
+<%= link_to 'Delete', @book, :method => :delete, :confirm => 'Is it ok to delete?', :class => 'btn btn-danger' %>
+<%= link_to 'Edit', edit_book_path(@book), :class=> 'btn btn-warning' %>
+<dl>
+  <dt>Cookbook Title:</dt>
+  <dd><%= @book.title %></dd>
+  <dt>Type of Cuisine:</dt>
+  <dd><%= @book.cuisine %></dd>
+  <dt>Chef:</dt>
+  <dd><%= @book.chef %></dd>
+  <dt>Cover:</dt>
+  <dd><%= image_tag(@book.image) %></dd>
+</dl>
+<br>
+
+
+<% @book.recipes.each do |recipe| %>
+  <%= link_to 'Delete', recipe, :method => :delete, :confirm => 'Is it ok to delete?', :class=> 'btn btn-danger' %>
+  <%= link_to 'Edit', edit_recipe_path(recipe), :class=> 'btn btn-warning' %>
+  <dl>
+    <dt>Recipe Name:</dt>
+    <dd><%= link_to(recipe.name, recipe) %></dd>
+    <dt>Recipe Image:</dt>
+    <dd><%= image_tag(recipe.image) %></dd>
+      <br>
+        <% recipe.ingredients.each do |ingredient| %>
+          <%= link_to 'Delete', ingredient, :method => :delete, :confirm => 'Is it ok to delete?', :class=> 'btn btn-danger' %>
+          <%= link_to 'Edit', edit_ingredient_path(ingredient), :class=> 'btn btn-warning' %>
+          <dl>
+            <dt>Ingredient Name:</dt>
+            <dd><%= link_to(ingredient.name, ingredient) %></dd>
+            <dt>Ingredient Image:</dt>
+            <dd><%= image_tag(ingredient.image) %><dd>
+          </dl>
+        <% end %>
+  </dl>
+<% end %>

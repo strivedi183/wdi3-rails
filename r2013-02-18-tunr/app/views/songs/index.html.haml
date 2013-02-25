@@ -1,0 +1,39 @@
+.row
+  .twelve.columns
+    = button_to('Add New Song', new_song_path, :method=>:get, :class => 'button radius') if is_admin
+    %table
+      %th
+        Name
+      %th
+        Image
+      - if !@auth.nil?
+        %th
+          Play Audio
+      - if !@auth.nil? && !is_admin
+        %th
+          Purchase!
+      - if is_admin
+        %th
+          Edit
+      - @songs.each do |song|
+        %tr{:class => cycle('row0','row1')}
+          %td
+            = link_to song.name, song, :class => 'button radius tiny'
+          %td
+            = image_tag(song.image)
+          - if !@auth.nil?
+            %td
+              - if @auth.mixtapes.map(&:songs).flatten.include?(song)
+                = audio_tag(song.filename, :controls => true) if @auth != nil
+              - else
+                .label.alert You need to buy this song to play it!
+
+          - if !@auth.nil? && !is_admin
+            %td
+              - if @auth.mixtapes.map(&:songs).flatten.include?(song)
+                = link_to('Song Purchased!', nil, :class => 'button disabled tiny alert')
+              - else
+                = link_to('Purchase Song', purchase_song_path(song.id), :method => 'get', :confirm => 'Are you sure?', :class => 'button radius success tiny')
+          - if is_admin
+            %td
+              = link_to 'Edit', edit_song_path(song), :class => "button success tiny" if is_admin

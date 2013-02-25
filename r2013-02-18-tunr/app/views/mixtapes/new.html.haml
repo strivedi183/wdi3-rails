@@ -1,0 +1,17 @@
+.row
+  .five.columns
+    = render(:partial => 'shared/errors', :locals => {:object => @mixtape})
+    %h3 New Mixtape
+    %h4 Add songs you already own!
+    = form_for @mixtape do |f|
+      = f.label :name
+      = f.text_field :name, :autofocus => true
+      - @auth.mixtapes.map(&:songs).flatten.each do |song|
+        %span
+          = check_box_tag 'mixtape[song_ids][]', song.id, song.in?(@mixtape.songs)
+        %span
+          = song.name
+        %br
+        %br
+      = f.submit nil, :class => 'button radius tiny'
+  .seven.columns

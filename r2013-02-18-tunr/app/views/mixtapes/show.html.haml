@@ -1,0 +1,14 @@
+.row
+  .twelve.columns
+    %h4= "#{@mixtape.name}'s Songs:"
+    %table
+      - @mixtape.songs.each do |song|
+        %tr
+          %td
+            = link_to song.name, song_path(song)
+          %td
+            - @song = song
+            = link_to 'Refund', refund_mixtape_path(song.id), :method => 'post', :confirm => "Are you sure you want a refund?", :class => "button alert tiny"
+          - if is_admin
+            %td
+              = link_to 'Edit', edit_song_path(song), :class => "button success tiny" if is_admin
