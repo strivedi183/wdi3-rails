@@ -1,0 +1,19 @@
+%h1 WDI ATM
+
+#atm_error
+
+.checking
+  #checking_balance
+  .label= label_tag 'Checking Balance'
+  .text_field= text_field_tag 'checking_amount'
+  .buttons
+    = submit_tag 'Add', :id => 'btn-checking-add'
+    = submit_tag 'With', :id => 'btn-checking-with'
+
+.savings
+  #savings_balance
+  .label= label_tag 'Savings Balance'
+  .text_field= text_field_tag 'savings_amount'
+  .buttons
+    = submit_tag 'Add', :id => 'btn-savings-add'
+    = submit_tag 'With', :id => 'btn-savings-with'

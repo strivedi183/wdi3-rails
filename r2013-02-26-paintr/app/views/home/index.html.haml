@@ -1,0 +1,12 @@
+%h1 PAINTR
+#selected
+= text_field_tag 'color', nil, :autofocus => true
+= submit_tag 'Add Color', :id => 'btn-color'
+= submit_tag 'Clear', :id => 'btn-clear'
+#colors
+#selected_image
+= text_field_tag 'image', nil, :autofocus => true
+= submit_tag 'Add Image', :id => 'btn-image'
+= submit_tag 'Clear', :id => 'btn-clear-image'
+#images
+#canvas

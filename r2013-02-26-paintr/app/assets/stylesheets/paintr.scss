@@ -1,0 +1,41 @@
+.box
+{
+  height: 50px;
+  width: 50px;
+  margin: 5px;
+  display: inline-block;
+  border: 1px dashed black;
+}
+
+#selected
+{
+  display: block;
+}
+
+.paint
+{
+  width: 5px;
+  height: 5px;
+  margin: 1px;
+  float: left;
+  border: 1px dashed black;
+}
+
+#selected_image
+{
+  background-size: 50px;
+}
+
+#canvas
+{
+  height: 1000px;
+  width: 1000px;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.translucent
+{
+  opacity: 0.5;
+}
+
