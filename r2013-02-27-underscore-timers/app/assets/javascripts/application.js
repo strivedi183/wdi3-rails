@@ -1,4 +1,4 @@
 //= require jquery
 //= require jquery_ujs
-//= 'underscore-min'
-//= 'timer'
+//= require 'underscore-min'
+//= require 'timer'
