@@ -1,0 +1,33 @@
+.row
+  .twelve.columns
+    %table#priority_table
+      - @priorities.each do |priority|
+        %tr
+          %script
+            = "priorities.push({id:#{priority.id}, name:'#{priority.name}', value:#{priority.value}, color:'#{priority.color}'});"
+          %td= image_tag('famfamfam/icons/arrow_up.png')
+          %td= image_tag('famfamfam/icons/arrow_down.png')
+          %td.hide.color_name= priority.color
+          %td= priority.name
+          %td.hide= priority.value
+          %td.hide= priority.id
+
+.row
+  .four.columns
+    .controls
+      .new
+        = button_tag 'New Priority', :id => 'new_priority', :class => 'button tiny alert cancel'
+      .form.hide
+        %h4 New Priority
+        = form_tag do
+          = label_tag 'color'
+          = text_field_tag 'color', nil, :class => 'minicolors'
+          = label_tag 'name'
+          = text_field_tag 'name', nil, :autofocus => true
+          = label_tag 'value'
+          = text_field_tag 'value'
+          = hidden_field_tag 'id', nil, :id => 'priority_id'
+          = link_to('Cancel', '#', :id => 'cancel_priority', :class => 'button tiny alert cancel')
+          = submit_tag 'New', :id => 'create_priority', :class => 'button tiny'
+          = submit_tag 'Update', :id => 'update_priority', :class => 'button tiny success'
+  .eight.columns

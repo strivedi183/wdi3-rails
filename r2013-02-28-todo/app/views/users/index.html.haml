@@ -1,0 +1,11 @@
+.row
+  .twelve.columns
+    %table
+      %th User Name
+      %th User Email
+      - @users.each do |user|
+        %tr
+          %td
+            = user.name
+          %td
+            = user.email

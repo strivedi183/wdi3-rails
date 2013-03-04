@@ -1,0 +1,28 @@
+.hide
+{
+  display:hidden;
+}
+
+.color_box
+{
+  background-size:cover;
+  border: 1px solid black;
+  width: 30px;
+  height: 30px;
+}
+
+.color_box:hover
+{
+  border: 1px solid red;
+}
+
+.color_name
+{
+  display:inline-block;
+}
+
+.inline-block
+{
+  display: inline-block;
+}
+
