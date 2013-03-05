@@ -1,3 +1,5 @@
+%script
+  var priorities = [];
 .row
   .twelve.columns
     %table#priority_table
@@ -28,6 +30,6 @@
           = text_field_tag 'value'
           = hidden_field_tag 'id', nil, :id => 'priority_id'
           = link_to('Cancel', '#', :id => 'cancel_priority', :class => 'button tiny alert cancel')
-          = submit_tag 'New', :id => 'create_priority', :class => 'button tiny'
+          = submit_tag 'Create', :id => 'create_priority', :class => 'button tiny'
           = submit_tag 'Update', :id => 'update_priority', :class => 'button tiny success'
   .eight.columns

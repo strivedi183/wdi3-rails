@@ -12,8 +12,6 @@ $(function(){
 
 // Global Variables
 // ******************** //
-var priorities = [];
-
 
 // ******************** //
 
@@ -164,7 +162,6 @@ function display_priority(message)
 
 function add_priority_to_array(priority)
 {
-
   priorities = _.reject(priorities, function(p){return p.id == priority.id});
   priorities.push(priority);
   priorities = _.sortBy(priorities, function(p){ return p.value; }).reverse();
@@ -196,7 +193,6 @@ function show_edit_priority()
   $('.form').show();
   $('#name').focus();
 }
-
 
 function replace_color()
 {
