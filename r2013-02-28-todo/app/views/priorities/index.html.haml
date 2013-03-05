@@ -5,8 +5,8 @@
         %tr
           %script
             = "priorities.push({id:#{priority.id}, name:'#{priority.name}', value:#{priority.value}, color:'#{priority.color}'});"
-          %td= image_tag('famfamfam/icons/arrow_up.png')
-          %td= image_tag('famfamfam/icons/arrow_down.png')
+          %td.up= image_tag('famfamfam/icons/arrow_up.png')
+          %td.down= image_tag('famfamfam/icons/arrow_down.png')
           %td.hide.color_name= priority.color
           %td= priority.name
           %td.hide= priority.value

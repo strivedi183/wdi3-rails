@@ -6,6 +6,8 @@ $(function(){
   $('#update_priority').click(update_priority);
   $('#priority_table').on('click','.color_box', edit_priority);
   init_minicolors();
+  $('#priority_table').on('click','.up', up_priority);
+  $('#priority_table').on('click','.down', down_priority);
 });
 
 // Global Variables
@@ -14,6 +16,32 @@ var priorities = [];
 
 
 // ******************** //
+
+function up_priority()
+{
+  var id = $(this).parent().children().last().text();
+  var token = $('input[name="authenticity_token"]').val();
+
+  $.ajax({
+    dataType: 'json',
+    type: "POST",
+    url: "/priorities/"+id+"/up",
+    data: {authenticity_token:token}
+  }).done(process_priority);
+}
+
+function down_priority()
+{
+  var id = $(this).parent().children().last().text();
+  var token = $('input[name="authenticity_token"]').val();
+
+  $.ajax({
+    dataType: 'json',
+    type: "POST",
+    url: "/priorities/"+id+"/down",
+    data: {authenticity_token:token}
+  }).done(process_priority);
+}
 
 function init_minicolors()
 {
@@ -90,9 +118,9 @@ function update_priority()
   return false;
 }
 
-function process_priority(priority)
+function process_priority(priority_list)
 {
-  add_priority_to_array(priority);
+  _.each(priority_list, add_priority_to_array);
   $('table').empty();
   _.each(priorities, display_priority);
 }
@@ -104,11 +132,15 @@ function display_priority(message)
   var value = message.value;
   var id = message.id;
   var tr = $('<tr>');
+  var td_up = $('<td>');
+  var td_down = $('<td>');
+  var img_up = $('<img alt="Arrow_up" src="/assets/famfamfam/icons/arrow_up.png">');
+  var img_down = $('<img alt="Arrow_down" src="/assets/famfamfam/icons/arrow_down.png">');
   var td_1 = $('<td>');
   var td_2 = $('<td>');
   var td_3 = $('<td>');
   var td_4 = $('<td>');
-  td_1.addClass('color_box');
+  td_1.addClass('priority color_box');
   td_1.css('background-color', color);
   td_2.addClass('priority');
   td_2.text(name);
@@ -116,6 +148,12 @@ function display_priority(message)
   td_3.text(value);
   td_4.addClass('priority hide');
   td_4.text(id);
+  td_up.addClass('priority up');
+  td_up.append(img_up);
+  td_down.addClass('priority down');
+  td_down.append(img_down);
+  tr.append(td_up);
+  tr.append(td_down);
   tr.append(td_1);
   tr.append(td_2);
   tr.append(td_3);
