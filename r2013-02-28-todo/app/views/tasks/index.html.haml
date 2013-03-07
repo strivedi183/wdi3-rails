@@ -1,0 +1,142 @@
+%script
+  var tasks = [];
+%h1 Tasks
+
+.row
+  .twelve.columns
+    #map_canvas
+    %script
+      display_map(40.7316, -73.9901, 13);
+  .twelve.columns
+    .controls
+      .new
+        = button_tag 'New Task', :id => 'new_task', :class => 'button success'
+        .form.hide
+          = form_tag do
+            = label_tag 'priority_id'
+            = select_tag 'priority_id', options_from_collection_for_select(@auth.priorities.order(:value).reverse,'id', 'name')
+            = label_tag 'is_complete'
+            = check_box_tag 'is_complete'
+            = label_tag 'title'
+            = text_field_tag 'title', nil, :autofocus => true
+            = label_tag 'description'
+            = text_field_tag 'description'
+            = label_tag 'duedate', 'Due'
+            = text_field_tag 'duedate'
+            = label_tag 'address'
+            = text_field_tag 'address'
+            = hidden_field_tag 'task_id'
+            = link_to('Cancel', '#', :id=>'cancel_task', :class => 'button tiny alert')
+            = submit_tag 'New Task', :id => 'create_task', :class => 'button tiny'
+            = submit_tag 'Edit Task', :id => 'update_task', :class => 'button tiny success'
+  .one.columns
+
+.row
+  .twelve.columns
+    %table
+      %thead
+        %tr
+          %th Is Complete?
+          %th Priority
+          %th Task
+          %th Delete
+          %th Update
+      %tbody
+      - @tasks.each do |task|
+        %tr.task_row
+          %td= check_box_tag 'is_complete', task.id, (true if task.is_complete == true)
+          %td.color= task.priority.color
+          %td= task.title
+          %td= link_to('Delete', '#', :class => 'delete button tiny alert')
+          %td= link_to('Update', '#', :class => 'update button tiny')
+          %td.hide= task.id
+          %script
+            = "add_marker(#{task.latitude}, #{task.longitude}, '#{task.title}');"
+            = "tasks.push({color:'#{task.priority.color}', title:'#{task.title}', value:#{task.priority.value}, latitude:#{task.latitude}, longitude:#{task.longitude}})"
+
+
+/ #map_canvas
+/ %script
+/   display_map(40.7316, -73.9901, 12);
+
+/ .row
+/   .three.columns
+/     .controls
+/       .new
+/         = button_tag 'New Task', :id => 'new_task', :class => 'button radius success tiny'
+/       .taskform.hide
+/         = form_tag do
+/           = label_tag 'priority_id'
+/           = select_tag 'priority_id', options_from_collection_for_select(@auth.priorities.order(:value).reverse, "id", "name")
+/           = label_tag 'title'
+/           = text_field_tag 'title'
+/           = label_tag 'description'
+/           = text_area_tag 'description'
+/           = label_tag 'duedate', 'Due'
+/           = text_field_tag 'duedate'
+/           = label_tag 'is_complete', 'Complete?'
+/           = check_box_tag 'is_complete'
+/           = label_tag 'address'
+/           = text_area_tag 'address'
+/           = hidden_field_tag 'task_id'
+/           = link_to('Cancel', '#', :id=>'cancel_task', :class => 'button radius tiny alert')
+/           = submit_tag 'New Task', :id => 'create_task', :class => 'button radius tiny'
+/           = submit_tag 'Edit Task', :id => 'update_task', :class => 'button radius tiny success'
+/   .nine.columns
+
+/ %ul#tasks
+/   - @tasks.each do |task|
+/     %li
+/       %script
+/         = "add_marker(#{task.latitude}, #{task.longitude}, '#{task.title}');"
+/     %li= task.title
+
+
+/ .row
+/   .twelve.columns
+/     #map_canvas
+/     %script
+/       display_map(40.7316, -73.9901, 13);
+/     %ul#task_list
+/       - @tasks.each do |task|
+/         %li
+/           %ul
+/             %script
+/               = "add_marker(#{task.latitude}, #{task.longitude}, '#{task.title}');"
+/             %li
+/               = task.title
+/             %li
+/               = task.description
+/             %li
+/               = task.duedate
+/             %li
+/               = task.is_complete
+/             %li
+/               = task.address
+/             %li
+/               = task.priority.name
+/ .row
+/   .four.columns
+/     .controls
+/       .new
+/         = button_tag 'New Task', :id => 'new_task', :class => 'button tiny alert cancel'
+/       .form
+/         %h4 New Task
+/         = form_tag do
+/           .inline-block= label_tag 'is_complete'
+/           = check_box_tag 'is_complete'
+/           = label_tag 'title'
+/           = text_field_tag 'title', nil, :autofocus => true
+/           = label_tag 'description'
+/           = text_area_tag 'description'
+/           = label_tag 'address'
+/           = text_area_tag 'address'
+/           = label_tag 'duedate'
+/           = text_field_tag 'duedate'
+/           = label_tag 'priority'
+/           = select_tag 'priority', options_from_collection_for_select(@auth.priorities, "id", "name")
+/           = hidden_field_tag 'id', nil, :id => 'task_id'
+/           = link_to('Cancel', '#', :id => 'cancel_task', :class => 'button tiny alert cancel')
+/           = submit_tag 'Create', :id => 'create_task', :class => 'button tiny'
+/           / = submit_tag 'Update', :id => 'update_task', :class => 'button tiny success'
+/   .eight.columns

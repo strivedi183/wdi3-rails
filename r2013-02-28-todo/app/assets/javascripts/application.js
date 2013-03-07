@@ -1,9 +1,11 @@
 //= require jquery
 //= require jquery_ujs
-//= require 'underscore-min'
 //= require 'foundation/javascripts/modernizr.foundation.js'
 //= require 'foundation/javascripts/foundation.min.js'
 //= require 'foundation/javascripts/app.js'
-//= require 'minicolors/jquery.minicolors'
+//= require 'minicolors/jquery.minicolors.js'
 //= require 'underscore-min.js'
-//= require 'todo'
+//= require 'task.js'
+//= require 'priority.js'
+//= require 'map.js'
+//= require 'todo.js'

@@ -1,11 +1,18 @@
-.row
-  .twelve.columns
-    %table
-      %th User Name
-      %th User Email
-      - @users.each do |user|
-        %tr
-          %td
-            = user.name
-          %td
-            = user.email
+%ol
+  - @users.each do |user|
+    %li
+      %ul
+        %li= user.name
+        %li= user.email
+
+/ .row
+/   .twelve.columns
+/     %table
+/       %th User Name
+/       %th User Email
+/       - @users.each do |user|
+/         %tr
+/           %td
+/             = user.name
+/           %td
+/             = user.email

@@ -1,5 +1,6 @@
 R20130228Todo::Application.routes.draw do
   root :to => 'home#index'
+  resources :tasks, :only => [:index, :create, :update, :destroy]
   resources :users, :only => [:index, :new, :create]
   resources :priorities, :only => [:index, :create, :update] do
     member do

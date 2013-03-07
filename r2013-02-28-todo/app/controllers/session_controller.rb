@@ -3,11 +3,10 @@ class SessionController < ApplicationController
   end
   def create
     user = User.where(:email => params[:email]).first
-    if user.present? && user.authenticate(params[:password])
+    if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       redirect_to(root_path)
     else
-      flash[:notice] = 'Incorrect Login, try again'
       redirect_to(login_path)
     end
   end
