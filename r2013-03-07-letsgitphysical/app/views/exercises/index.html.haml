@@ -1,0 +1,13 @@
+= link_to('New', new_exercise_path, :class => 'button tiny success')
+= link_to('New', new_exercise_path, :remote => true, :class => 'button tiny alert')
+
+= select_tag 'activities', options_for_select(@activities.map{ |a| [a, a] })
+
+= link_to('Show Chart', '#', :class => 'button tiny alert', :id => 'show_chart' )
+
+#chart
+
+#new_exercises
+
+%ol#exercises
+
