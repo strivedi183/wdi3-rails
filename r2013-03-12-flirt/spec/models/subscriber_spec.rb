@@ -2,24 +2,25 @@
 #
 # Table name: subscribers
 #
-#  id          :integer          not null, primary key
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
-#  tagline     :string(255)
-#  bio         :string(255)
-#  preferences :string(255)
-#  bodytype    :string(255)
-#  location    :string(255)
-#  status      :string(255)
-#  ethnicity   :string(255)
-#  gender      :string(255)
-#  age         :integer
-#  occupation  :string(255)
-#  interests   :string(255)
-#  political   :string(255)
-#  religious   :string(255)
-#  education   :string(255)
-#  income      :decimal(, )
+#  id              :integer          not null, primary key
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  tagline         :string(255)
+#  bio             :string(255)
+#  preferences     :string(255)
+#  bodytype        :string(255)
+#  location        :string(255)
+#  status          :string(255)
+#  ethnicity       :string(255)
+#  gender          :string(255)
+#  age             :integer
+#  occupation      :string(255)
+#  interests       :string(255)
+#  political       :string(255)
+#  religious       :string(255)
+#  education       :string(255)
+#  income          :decimal(, )
+#  subscription_id :integer
 #
 
 require 'spec_helper'
@@ -50,6 +51,20 @@ describe Subscriber do
     it 'fails validation if tagline, bio or gender are not present or age < 18 years old' do
       subscriber = Subscriber.create
       expect(subscriber.id).to be nil
+    end
+  end
+
+  describe '#has_subscription?' do
+    it 'subscriber has a subscripton' do
+      subscriber = Subscriber.create(tagline: 'hey', bio: 'my bio', gender: 'female', age: 18)
+      subscription = Subscription.create
+      subscriber.subscription = subscription
+      subscriber.save
+      expect(subscriber.has_subscription?).to be_true
+    end
+    it 'subscriber does not have a subscription' do
+      subscriber = Subscriber.create(tagline: 'hey', bio: 'my bio', gender: 'female', age: 18)
+      expect(subscriber.has_subscription?).to be_false
     end
   end
 
