@@ -1,0 +1,13 @@
+%table
+  %thead
+    %th Name
+    %th Email
+    %th Cash
+    %th Portfolio
+  %tbody
+  - @users.each do |user|
+    %tr
+      %td= user.name
+      %td= user.email
+      %td= number_to_currency(user.balance - user.initial_position)
+      %td= number_to_currency(user.current_position)

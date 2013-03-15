@@ -1,0 +1,10 @@
+.inline-block
+  = form_for @stock, :remote => true do |f|
+    .inline-block= link_to('New', new_stock_path, :remote => true, :class => 'button tiny success')
+    .inline-block= f.label :symbol, :autofocus => true
+    .inline-block= f.text_field :symbol
+    .inline-block= f.label :shares
+    .inline-block= f.text_field :shares
+    .inline-block= f.submit nil, :class => 'button tiny'
+    .inline-block= link_to 'Cancel', '#', :class => 'button tiny alert btn-close_stock_form' , :id => 'btn-close_stock_form'
+

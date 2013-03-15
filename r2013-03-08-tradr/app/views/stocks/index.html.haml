@@ -1,0 +1,14 @@
+#add_new_stock= link_to('New', new_stock_path, :remote => true, :class => 'button tiny success')
+
+#new_stock
+
+#stocks
+  = render(:partial => 'stocks')
+
+#stock_checkboxes
+  - @stocks.each do |stock|
+    .stock_checkbox
+      .inline-block= check_box_tag stock.symbol
+      .inline-block= label_tag stock.symbol
+
+#chart_stocks

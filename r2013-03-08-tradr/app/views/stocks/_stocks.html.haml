@@ -1,0 +1,27 @@
+%script
+  var quotes = {};
+#check_boxes
+  = form_tag
+  - @stocks.each do |stock|
+    .check_boxes
+      .inline-block= label_tag stock.symbol
+      .inline-block= check_box_tag stock.symbol
+      %script
+        = "quotes['#{stock.symbol}'] = [#{stock.price}]"
+.clear
+
+
+
+%table
+  %thead
+    %th Symbol
+    %th Shares
+    %th Purchase Price
+    %th Current Price
+  %tbody
+  - @stocks.each do |stock|
+    %tr
+      %td= stock.symbol
+      %td= stock.shares
+      %td= number_to_currency(stock.price)
+      %td= number_to_currency(stock.get_quote)
