@@ -1,7 +1,2 @@
-<% if session[:user_id].present? %>
-  $('#form').empty();
-  $('.nav-bar ul').append('<%=j render(:partial => 'logout_link') %>');
-  clear_login_buttons();
-<% else %>
-  $('#form').empty().append('<%=j render(:partial => 'form') %>');
-<% end %>
+$('.username').remove();
+show_or_hide_login_register_links();
