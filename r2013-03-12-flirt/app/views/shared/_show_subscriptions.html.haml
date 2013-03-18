@@ -1,3 +1,0 @@
-- if @auth.present? && @auth.sub.present? && !@auth.sub.has_subscription?
-  - Subscription.all.each do |subscription|
-    = button_to(subscription.plan, '#', :remote => true)
