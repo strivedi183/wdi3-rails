@@ -18,12 +18,11 @@ class User < ActiveRecord::Base
   belongs_to :userable, :polymorphic => true
   validates :username, :email, :presence => true
 
-  def subscriber
+  def sub
     self.userable if self.userable.is_a?(Subscriber)
   end
 
   def admin
     self.userable if self.userable.is_a?(Administrator)
   end
-
 end

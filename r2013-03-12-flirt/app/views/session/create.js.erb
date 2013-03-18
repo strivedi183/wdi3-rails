@@ -1,6 +1,7 @@
 <% if session[:user_id].present? %>
   $('.nav-bar ul').append('<%=j render(:partial => 'logout_link') %>');
   show_or_hide_login_register_links();
+  $('#subscriptions').append('<%=j render(:partial => 'shared/show_subscriptions') %>');
 <% else %>
   $('#form').empty().append('<%=j render(:partial => 'form') %>');
 <% end %>

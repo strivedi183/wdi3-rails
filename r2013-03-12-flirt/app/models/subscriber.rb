@@ -21,16 +21,17 @@
 #  education       :string(255)
 #  income          :decimal(, )
 #  subscription_id :integer
+#  expires         :date
 #
 
 class Subscriber < ActiveRecord::Base
   attr_accessible :tagline, :bio, :preferences, :bodytype, :location, :status, :ethnicity, :gender, :age, :occupation, :interests, :political, :religious, :education, :income
   has_one :user, :as => :userable
-  belongs_to :subscription, :inverse_of => :subscribers
+  belongs_to :subscription
   validates :tagline, :bio, :gender, :presence => true
   validates :age, :numericality => {:greater_than => 17}
 
   def has_subscription?
-    self.subscription
+    self.subscription.present?
   end
 end

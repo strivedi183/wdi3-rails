@@ -15,5 +15,6 @@
 #
 
 class Subscription < ActiveRecord::Base
-  has_many :subscribers, :inverse_of => :subscription
+  attr_accessible :plan, :duration, :cost, :num_photos, :num_emails, :num_texts, :is_alist
+  has_many :subscribers
 end
