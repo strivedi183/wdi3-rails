@@ -1,6 +1,5 @@
 #anonymous
-  = link_to('Register', new_subscriber_path, :remote => true, :class => 'button tiny radius')
-  = link_to('Login', login_path, :remote => true, :class => 'button tiny radius')
+  = render(:partial => 'anonymous')
 #form
 #subscriptions
-  = render(:partial => 'shared/show_subscriptions')
+  = render(:partial => 'subscriptions')
