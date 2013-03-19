@@ -1,0 +1,5 @@
+= form_for @album, :remote => true do |f|
+  = f.label :name
+  = f.text_field :name
+  = link_to     = link_to('Cancel', '#', :'data-clear-form' => true, :class => 'button tiny radius alert')
+  = f.submit nil,:class => 'button tiny radius success'

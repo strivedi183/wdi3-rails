@@ -1,0 +1,9 @@
+%table
+  %tr
+    %th Album Name
+    %th Photo Count
+  - @albums.each do |album|
+    %tr
+      %td
+        = link_to(album.name, album_path(album.id))
+      %td
