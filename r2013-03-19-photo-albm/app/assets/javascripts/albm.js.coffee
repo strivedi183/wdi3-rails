@@ -1,9 +1,23 @@
-class Albm
+class Home
   @document_ready: ->
-    $('#form').on('click', 'a[data-clear-form]', Albm.clear_form)
+    $('#form').on('click', 'a[data-clear-form]', Home.clear_form)
+    photos = $('.photo').length
+    $('#slider').slider({ min: 0, max: photos, step: 1, slide: Home.sliding })
+    $('#slider').slider('option', 'max', photos)
 
   @clear_form: (e) ->
     e.preventDefault()
     $('#form').empty()
 
-$(document).ready(Albm.document_ready)
+  @sliding: (e, ui) ->
+    album_id = $('#album').data('album-id')
+    count = ui.value
+    settings =
+      dataType: 'script'
+      type: 'get'
+      url: "/albums/#{album_id}/filter?count=#{count}"
+    $.ajax(settings)
+    console.log(album_id)
+    console.log(ui.value)
+
+$(document).ready(Home.document_ready)

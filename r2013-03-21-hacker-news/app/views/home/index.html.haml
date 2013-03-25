@@ -1,0 +1,9 @@
+%h1 Test
+
+= form_tag '/hackernews' do
+  = text_field_tag :pages
+  = submit_tag 'Get Hacker News'
+
+%ol
+  - @articles.each do |article|
+    %li= link_to(article.title, article.url)
