@@ -12,7 +12,8 @@ class Home
       width = 5*i+10
       $(x).css('width',width)
       $(x).data('weight',i)
-      $('#call_1 .post').prepend(x)
+      $(x).addClass('disk')
+      $('#call_1 .base').append(x)
       i++
 
 $(document).ready(Home.document_ready)
