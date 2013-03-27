@@ -1,0 +1,22 @@
+.row
+  .large-12.columns.spacer
+    = "The Declaration word count is #{@declaration.words.count}"
+    %script
+      = "var word_count = #{@declaration.words.count}"
+
+.row
+  .large-12.columns
+    %h1 This is the slider for the declaration
+    #slider
+
+.row
+  .large-12.columns
+    %table
+      %tr
+        %td#word
+      %tr
+        %td#hexademical
+      %tr
+        %td#decimal
+      %tr
+        %td#binary

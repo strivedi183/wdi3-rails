@@ -4,6 +4,7 @@ gem 'rails'
 gem 'pg'
 gem 'jquery-rails'
 gem 'haml'
+gem 'httparty'
 
 group :assets do
   gem 'sass-rails'
