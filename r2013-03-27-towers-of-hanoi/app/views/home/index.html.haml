@@ -1,11 +1,20 @@
 %h1 Towers of Hanoi
-
+#form
+  = form_tag root_path, :remote => true do
+    = label_tag 'ring_count', "Number of Rings"
+  .row
+    = text_field_tag 'ring_count', nil, :autofocus => true
+    = submit_tag 'PLAY!', :id => 'play_btn', :class => 'button success radius'
+  %p
 .callbox#call_1
   .base
   .post
+  = button_tag 'Select', :id => 'call_1', :class => 'button secondary radius'
 .callbox#call_2
   .base
   .post
+  = button_tag 'Select', :id => 'call_2', :class => 'button secondary radius'
 .callbox#call_3
   .base
   .post
+  = button_tag 'Select', :id => 'call_3', :class => 'button secondary radius'

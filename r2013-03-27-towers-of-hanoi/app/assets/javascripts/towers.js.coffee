@@ -1,9 +1,12 @@
 class Home
   @document_ready: ->
-    Home.create_rings(5)
+    $('#play_btn').click(Home.get_number)
+
+  @get_number: ->
+    num = $('#ring_count').val()
+    Home.create_rings(num)
 
   @create_rings: (num) ->
-    debugger
     num.to_i
     i = 1
     while i <= num
