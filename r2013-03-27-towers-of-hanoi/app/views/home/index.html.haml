@@ -1,24 +1,34 @@
 %h1 Towers of Hanoi
-#form
-  = form_tag root_path, :remote => true do
-    = label_tag 'ring_count', "Number of Rings"
+.row#controls
+  %table{:border => "1", :cellspacing => "0", :width => "140"}
+    %tr
+      %td{:align => "center"}
+        %form{:name => "clock"}
+          %br
+          %input{:name => "stwa", :size => "12", :type => "text"}
+          %br
+          %input{:name => "theButton", :onclick => "stopwatch(this.value);", :type => "button", :value => "Start"}
+          %input{:onclick => "resetIt();reset();", :type => "button", :value => "Reset"}
+          %p
+  %p
+  .row
+  #form
+    = form_tag root_path, :remote => true do
+      = label_tag 'ring_count', "Number of Rings"
   .row
     = text_field_tag 'ring_count', nil, :autofocus => true
-    = submit_tag 'PLAY!', :id => 'play_btn', :class => 'button success radius'
-    = submit_tag 'Reset', :id => 'reset_btn', :class => 'button success radius'
-  %p
+    = submit_tag 'PLAY!', :id => 'play_btn', :name => "theButton", :onclick => "stopwatch(this.value);", :type => "button", :value => "Start"
+    = submit_tag 'Reset', :id => 'reset_btn', :onclick => "resetIt();reset();", :type => "button", :value => "Reset"
+    %p
 .callbox#call_1
   .rings
   .base
-  .post
   = button_tag 'Select', :id => 'call_1', :class => 'button secondary radius'
 .callbox#call_2
   .rings
   .base
-  .post
   = button_tag 'Select', :id => 'call_2', :class => 'button secondary radius'
 .callbox#call_3
   .rings
   .base
-  .post
   = button_tag 'Select', :id => 'call_3', :class => 'button secondary radius'

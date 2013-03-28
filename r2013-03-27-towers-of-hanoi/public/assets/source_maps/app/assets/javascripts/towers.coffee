@@ -1,6 +1,7 @@
 class Home
   @document_ready: ->
     $('#play_btn').click(Home.get_number)
+    $('#play_btn').click(Home.stopwatch)
     $('.callbox button').click(Home.select_ring_1)
     $('#reset_btn').click(Home.reset)
 
@@ -42,7 +43,10 @@ class Home
       $('#call_1').removeClass('background-yellow')
       $('#call_2').removeClass('background-yellow')
       $('#call_3').removeClass('background-yellow')
-
+      if $('#call_2').children().first().children().length == Home.ring_match
+        $('#call_2').addClass('background-blue')
+      if $('#call_3').children().first().children().length == Home.ring_match
+        $('#call_3').addClass('background-blue')
 
   @get_number: ->
     num = $('#ring_count').val()
@@ -64,9 +68,43 @@ class Home
       $(x).attr('id',"disk_#{i}")
       $('#call_1 .rings').append(x)
       i++
+    Home.ring_match = $('#call_1').children().first().children().length
+    console.log(Home.ring_match)
+
 
   @reset: ->
     $('.callbox .rings').empty()
     $("input[type=text], textarea").val("")
+
+
+  @stopwatch = (text) ->
+    sec++
+    if sec is 60
+      sec = 0
+      min = min + 1
+    else
+      min = min
+    if min is 60
+      min = 0
+      hour += 1
+    sec = "0" + sec  if sec <= 9
+    document.clock.stwa.value = ((if (hour <= 9) then "0" + hour else hour)) + " : " + ((if (min <= 9) then "0" + min else min)) + " : " + sec
+    document.clock.theButton.value = "Stop "  if text is "Start"
+    document.clock.theButton.value = "Start"  if text is "Stop "
+    if document.clock.theButton.value is "Start"
+      window.clearTimeout SD
+      sec = sec - 1
+      return true
+    SD = window.setTimeout("stopwatch();", 1000)
+  resetIt = ->
+    sec = -1
+    min = 0
+    hour = 0
+    document.clock.theButton.value = "Start"  if document.clock.theButton.value is "Stop "
+    window.clearTimeout SD
+  sec = -1
+  min = 0
+  hour = 0
+
 
 $(document).ready(Home.document_ready)
