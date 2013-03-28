@@ -71,11 +71,9 @@ class Home
     Home.ring_match = $('#call_1').children().first().children().length
     console.log(Home.ring_match)
 
-
   @reset: ->
     $('.callbox .rings').empty()
     $("input[type=text], textarea").val("")
-
 
   @stopwatch = (text) ->
     sec++
@@ -105,6 +103,5 @@ class Home
   sec = -1
   min = 0
   hour = 0
-
 
 $(document).ready(Home.document_ready)
