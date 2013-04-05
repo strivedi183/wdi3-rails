@@ -2,9 +2,14 @@ window.app =
   map: null
   markers: []
   ready: ->
-    $('#products').on('keypress', '#search', filter_products)
-    filter_products: (e) ->
-      console.log(e.which)
+    $('body').on('keydown', '#search', app.filter_products)
+  filter_products: (e) ->
+    query = $('#search').val()
+    settings =
+      dataType: 'script'
+      type: 'get'
+      url: "/products/search?query=#{query}"
+    $.ajax(settings)
   display_map: (lat, lng, zoom) ->
     mapOptions =
       center: new google.maps.LatLng(lat, lng)

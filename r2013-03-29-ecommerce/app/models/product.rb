@@ -5,10 +5,11 @@
 #  id          :integer          not null, primary key
 #  name        :string(255)
 #  description :text
-#  image_url   :string(255)
-#  cost        :decimal(, )
-#  latitude    :float            default(0.0)
-#  longitude   :float            default(0.0)
+#  image       :text
+#  cost        :decimal(, )      default(0.0)
+#  lat         :float
+#  lng         :float
+#  address     :text
 #  user_id     :integer
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null

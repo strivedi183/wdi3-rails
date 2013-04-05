@@ -11,6 +11,7 @@ gem 'fog'
 gem 'rmagick'
 gem 'remotipart'
 gem 'aws-ses'
+gem 'stripe'
 
 group :assets do
   gem 'sass-rails'

@@ -15,7 +15,13 @@
       %tr
         %script
           = "app.add_marker(#{product.lat}, #{product.lng}, '#{product.name}');"
-        %td= product.name
+        %td
+          %script{:src => "https://checkout.stripe.com/v2/checkout.js",
+                  :class => "stripe-button",
+                  :'data-label' => product.name,
+                  :'data-amount' => product.cost * 100,
+                  :'data-key' => Rails.configureation.stripe[:publishable_key]}
+          = form_tag purchase_product_path(product), :remote => true do end
         %td= product.description
         %td= image_tag product.image.thumb.url
         %td= number_to_currency product.cost
