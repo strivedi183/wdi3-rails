@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "",
+  "sourceRoot": "",
+  "sources": [
+    "/assets/source_maps/app/assets/javascripts/posterous.coffee"
+  ],
+  "names": [],
+  "mappings": "AAAA;CAAA,CAAA,CAAA,EAAkB,CAAZ,KAAwB;;CAA9B,CAEA,CAAG,GAAO,GAAK;CACb,GAAA,GAAA,CAAA;CAAA,GACA,CAAA,GAAA;CACK,CAAkB,CAAA,CAAnB,GAAJ,CAAA,CAAuB,EAAvB;CACO,CAAiB,EAAlB,EAAJ,EAAA,KAAA;CAAsB,CAAO,EAAN,IAAA,EAAD;CADD,OACrB;CADF,IAAuB;CAHzB,EAAe;;CAFf,CAQA,CAAG,EAAH,CAAY;CACV,CAAU,EAAV,IAAA;CATF,GAQY;CARZ"
+}
