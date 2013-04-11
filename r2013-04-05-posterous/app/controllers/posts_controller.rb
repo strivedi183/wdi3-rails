@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   def update
     post = Post.find(params[:id])
     post.update_attributes(params[:post])
-    render :nothing => true
+    render :json => {post: post}
   end
   def show
     render :json => {post: Post.find(params[:id])}

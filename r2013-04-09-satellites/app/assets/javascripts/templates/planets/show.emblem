@@ -1,0 +1,21 @@
+if isNew
+  h1 new satellite
+else
+  button{action newSatellite} New Satellite
+
+h5.subheader = name
+
+table
+  tr
+    th Name
+    th Image
+    th Period
+    th Diameter
+    th Distance
+  each satellites
+    tr
+      td: name
+      td: img src=image
+      td: period
+      td: distance
+      td: diameter

@@ -1,0 +1,21 @@
+.row
+  .large-5.columns
+    h1.subheader This is Emblem
+    linkTo 'index' class='button tiny radius' | Index
+    linkTo 'about' class='button tiny radius' | About
+    linkTo 'faq' class='button tiny radius' | FAQ
+    linkTo 'posts' class='button tiny radius secondary' | Posts
+    linkTo 'posts.new' class='button tiny radius' | New
+    outlet
+  .large-7.columns
+
+/ <div class='row'>
+/   <div class='large-5 columns'>
+/     <h1 class='subheader'>This is Handlebars</h1>
+/     {{#linkTo 'index' class='button tiny radius'}}Index{{/linkTo}}
+/     {{#linkTo 'about' class='button tiny radius'}}About{{/linkTo}}
+/     {{#linkTo 'faq' class='button tiny radius'}}FAQ{{/linkTo}}
+/     {{#linkTo 'posts' class='button tiny radius secondary'}}Posts{{/linkTo}}
+/     {{outlet}}
+/   </div>
+/ </div>

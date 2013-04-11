@@ -1,0 +1,17 @@
+h1 Posts
+table: each model: tr
+  td
+    button{action 'delete' this} class='button tiny radius alert'
+  td
+    linkTo 'posts.show' this class='button tiny radius alert': = title
+outlet
+/ <h1>Posts</h1>
+/ <ul>
+/   {{#each model}}
+/     <li>
+/       {{#linkTo 'posts.show' this class='button tiny radius alter'}}{{title}}{{/linkTo}}
+/     </li>
+/   {{/each}}
+/ </ul>
+
+/ {{outlet}}

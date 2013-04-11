@@ -1,0 +1,3 @@
+Ember.TextField valueBinding='name'
+Ember.TextField valueBinding='image'
+button{action save} Save

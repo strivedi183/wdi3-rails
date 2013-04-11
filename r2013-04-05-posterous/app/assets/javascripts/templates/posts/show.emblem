@@ -1,0 +1,30 @@
+if isEditing
+  button{action 'save'} Done
+  Ember.TextField valueBinding='title'
+  Ember.TextField valueBinding='author'
+  Ember.TextArea valueBinding='body'
+else
+  button{action 'edit'} Edit
+  table
+    tr
+      th Title
+      th Author
+      th Body
+      th Posted
+    tr
+      td = title
+      td = author
+      td = body
+      td = date post_date
+
+/ {{#if isEditing}}
+/   <button {{action 'doneEditing'}}>Done</button>
+/   <p>{{view Ember.TextField valueBinding='title'}}</p>
+/   <p>{{view Ember.TextField valueBinding='author'}}</p>
+/   <p>{{view Ember.TextArea valueBinding='body'}}</p>
+/ {{else}}
+/   <button {{action 'edit'}}>Edit</button>
+/   {{title}}
+/   {{author}}
+/   {{body}}
+/ {{/if}}

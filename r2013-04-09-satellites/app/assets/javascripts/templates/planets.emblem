@@ -1,0 +1,5 @@
+table: each model: tr
+  td: linkTo 'planets.show' this class='button tiny radius alert' name
+  td.normal
+    img src=image
+outlet

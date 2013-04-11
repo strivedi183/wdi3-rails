@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "",
+  "sourceRoot": "",
+  "sources": [
+    "/assets/source_maps/app/assets/javascripts/helpers/image_helper.coffee"
+  ],
+  "names": [],
+  "mappings": "AAAA;CAAA,CAAA,CAAkD,EAA7C,IAA8C,CAAnC,CAAhB,QAAA;CAAkD,EACpC,QAAX,CAAA;CADH,EAAkD;CAAlD"
+}

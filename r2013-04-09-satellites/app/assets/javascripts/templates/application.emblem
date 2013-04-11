@@ -1,0 +1,9 @@
+.row
+  .large-12.columns
+    h1.subheader Satellites
+    linkTo 'index' class='button tiny' | Home
+    linkTo 'about' class='button tiny' | About
+    linkTo 'faq' class='button tiny' | Faq
+    linkTo 'planets' class='button tiny' | Planets
+    linkTo 'new planet' class='button tiny' | New Planet
+    outlet

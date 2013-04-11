@@ -1,10 +1,12 @@
-window.App = Ember.Application.create()
+window.App = Ember.Application.create
+  LOG_TRANSITIONS: true
 
 App.Router.map ->
-  this.resource 'about'
-  this.resource 'faq'
-  this.resource 'posts', ->
-    this.resource 'post', {path: ':post_id'}
+  @route 'about'
+  @route 'faq'
+  @resource 'posts', ->
+    @route 'show', {path: ':post_id'}
+    @route 'new'
 
 App.Store = DS.Store.extend
   revision: 12
