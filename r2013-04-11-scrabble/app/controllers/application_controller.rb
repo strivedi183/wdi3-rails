@@ -1,10 +1,11 @@
 class ApplicationController < ActionController::Base
-  before_filter :authenticate
   protect_from_forgery
+
+  before_filter :authenticate
   private
   def authenticate
-    if session[:user_id].present?
-      @auth = User.find(session[:user_id])
+    if session[:username].present?
+      @auth = User.where(username: session[:username]).first
     else
       @auth = nil
     end

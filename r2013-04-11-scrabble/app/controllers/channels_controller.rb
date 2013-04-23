@@ -1,12 +1,11 @@
 class ChannelsController < ApplicationController
-  def index
-    @channel = Channel.new
+  def create
+    name = params[:channel]
+    channel = Channel.where(name: name).first
+    channel = Channel.create(name: name) if channel.nil?
     @channels = Channel.order(:name)
   end
-  def create
-    channel = Channel.where(name: params[:channel][:name]).first
-    channel = Channel.create(params[:channel]) if channel.nil?
-    @channel = Channel.new
+  def refresh
     @channels = Channel.order(:name)
   end
 end

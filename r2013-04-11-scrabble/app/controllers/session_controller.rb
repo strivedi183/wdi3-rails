@@ -1,18 +1,19 @@
 class SessionController < ApplicationController
-  def new
-  end
   def create
-    user = User.where(:username => params[:username]).first
-    user = User.create(username: params[:username]) if user.nil?
+    username = params[:username]
+    user = User.where(username: username).first
+    user = User.create(username: username) if user.nil?
     user.is_online = true
     user.save
-    session[:user_id] = user.id
+    session[:username] = user.username
     authenticate
+    @channels = Channel.order(:name)
   end
+
   def destroy
     @auth.is_online = false
     @auth.save
-    session[:user_id] = nil
+    session[:username] = nil
     authenticate
   end
 end

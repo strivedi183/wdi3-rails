@@ -1,15 +1,23 @@
 <!DOCTYPE html>
-<html>
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+
 <head>
-  <title>R20130411Scrabble</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>Scrabble</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <script src="http://js.pusher.com/2.0/pusher.min.js"></script>
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div id='nav'><%= render :partial => 'layouts/nav' %></div>
+  <div id='body'><%= render :partial => 'layouts/body' %></div>
+  <div id='footer'><%= render :partial => 'layouts/footer' %></div>
 
-<%= yield %>
-
+  <script>
+  $(document).foundation();
+  </script>
 </body>
 </html>

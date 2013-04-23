@@ -1,16 +1,15 @@
-#scrabble_app
-  .row
-    .large-12.columns
-      %h1 Scrabble
-  .row
-    .large-12.columns
-      #session_form.inline-block
-        = render 'session/form'
-  .row
-    .large-12.columns
-      #add_channel_form.inline-block
-        = render 'channels/form'
-      #refresh_channels.inline-block
-        = link_to('Refresh Channels', channels_path, :remote => true, :class => 'button tiny')
-      #all_channels
-        = render 'channels/channels'
+.row#auth_token{:'data-auth-token' => form_authenticity_token}
+  .large-2.columns
+    #login
+      = render 'login'
+    #logout
+      = render 'logout'
+    #channels
+      = render 'channels'
+    #channel_form
+      = render 'channel_form'
+  .large-2.columns
+    #chat_console
+      = render 'chat_console'
+  .large-8.columns
+    #game_center

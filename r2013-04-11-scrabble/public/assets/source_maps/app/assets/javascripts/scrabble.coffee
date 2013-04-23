@@ -1,28 +1,51 @@
 window.app =
+  selected_cell: null
   selected_channel: null
   pusher: null
   ready: ->
-    $('body').on('click', '#all_channels li', app.select_channel)
+    $('#channels').on('click', '.channel', app.select_cell)
+    $('#chat_console').on('click', '#chat_button', app.send_chat)
     app.pusher = new Pusher('594a7ba71c0d75f637a7')
-  select_channel: ->
-    app.unsubscribe_channel() if app.selected_channel != null
-    if $(this).hasClass('background-yellow')
-      $(this).removeClass('background-yellow')
-      app.selected_channel = null
+  select_cell: ->
+    app.selected_cell.removeClass('selected_cell') if app.selected_cell
+    if app.selected_cell && (app.selected_cell[0] == this)
+      app.selected_cell = null
     else
-      app.selected_channel = $(this)
-      $('.channel').removeClass('background-yellow')
-      $(this).addClass('background-yellow')
-      app.subscribe_channel()
-  subscribe_channel: ->
-    app.pusher.subscribe(app.selected_channel.text())
+      app.selected_cell = $(this)
+      app.selected_cell.addClass('selected_cell')
+      app.select_channel(app.selected_cell.text())
+  select_channel: (name) ->
+    app.pusher.unsubscribe(app.selected_channel) if app.selected_channel
+    app.pusher.subscribe(name)
+    app.selected_channel = name
     app.bind_events()
-  unsubscribe_channel: ->
-    app.pusher.unsubscribe(app.selected_channel.text())
   bind_events: ->
-    channel = app.pusher.channels.channels[app.selected_channel.text()]
+    channel = app.pusher.channels.channels[app.selected_channel]
     channel.bind('chat', app.chat)
+    channel.bind('joingame', app.joingame)
   chat: (data) ->
-    console.log(data)
+    message = $('<div class="message">')
+    message.text(data)
+    $('#chat_message_list').prepend(message)
+  send_chat: (e) ->
+    e.preventDefault()
+    $('#chat_channel').val(app.selected_channel)
+    form = $(this).parent()
+    form.submit()
+    $('#chat_message').val('').focus()
+  start_game: ->
+    token = $('#auth_token').data('auth-token')
+    settings =
+      dataType: 'script'
+      type: "post"
+      url: "/start_game"
+      data: {authenticity_token: token, channel: app.selected_channel}
+    $.ajax(settings)
+  joingame: (data) ->
+    settings =
+      dataType: 'script'
+      type: "get"
+      url: "/refresh_players/#{app.selected_channel}"
+    $.ajax(settings)
 
 $(document).ready(app.ready)
