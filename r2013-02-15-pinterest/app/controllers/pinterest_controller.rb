@@ -10,6 +10,5 @@ class PinterestController < ApplicationController
     doc = Nokogiri::HTML(open(url))
     images = doc.css('img')
     @urls = images.map {|i| i.get_attribute('src')}.select {|u| u.exclude?('avatar')}
-    end
   end
 end
